@@ -1,82 +1,142 @@
-Planetary Query System
+# Planetary Query System
 
-Our Python script is designed to provide information about all of the planets in the solar system. Users can type in questions about a planet’s mass, distance from the sun, or moons, and the script will pull it out from our data base and return the relevant information.
+## Table of Contents
+- [Executive Summary](#executive-summary)
+- [Introduction](#introduction)
+- [System Design and Methodology](#system-design-and-methodology)
+  - [1. Planet Class](#1-planet-class)
+  - [2. Planetary Data Dictionary](#2-planetary-data-dictionary)
+  - [3. Query Processing Function](#3-query-processing-function)
+  - [4. Special Handling for Pluto](#4-special-handling-for-pluto)
+  - [5. Continuous Interaction Loop](#5-continuous-interaction-loop)
+- [Key Features](#key-features)
+- [Conclusion](#conclusion)
+- [Future Improvements](#future-improvements)
+- [License](#license)
 
-How my Code works?
+---
 
-1. Planet Class:
+## Executive Summary
 
-The script defines a Planet class that serves as a base for storing planetary data as requested from our task requerements. The class has:
+The **Planetary Query System** is a Python-based command-line application designed to provide users with accurate and flexible access to planetary data from our solar system. The program supports natural language queries about planetary mass, distance from the Sun, and known moons. By implementing object-oriented design, regular expression parsing, and a responsive query loop, the system delivers consistent and user-friendly results.
 
-    An "__init__" method that contains the planets' name, mass, distance from the sun, and moons.
+---
 
-    The "getter methods (get_name(), get_mass(), etc.)" allow us to access this data separately as a function.
+## Introduction
 
-This setup ensures that each planet has its own information, and it is available in a timely manner as needed.
+Understanding planetary data in an accessible way is important for both education and curiosity-driven exploration. This project was developed to meet that need by allowing users to ask natural-language questions about planets in the solar system and receive structured, factual responses.
 
-2. Our Dictionary:
+The core goals of the project were to:
 
-Instead of creating separate objects for each planet, the script stores all planetary data. Each planet’s mass, distance from the Sun, and moons are stored as key-value pairs.
+- Create a flexible, user-centered planetary information system.
+- Provide accurate planetary data using structured storage.
+- Enable support for varied phrasing and minor user input errors.
 
-This makes it easy to look up planetary information very simply.
+---
 
-3. Our "query_planet" function:
+## System Design and Methodology
 
-This function is responsible for analyzing a question and finding the correct response. It does this by converting the user’s input to lowercase to avoid case-sensitivity issues.
+### 1. Planet Class
 
-    We are also using regular expressions such as "(re.search)" to detect different ways of asking for the same information even if the person has made a minor spelling mistake or has rephrased their question.
+The project defines a `Planet` class that encapsulates the attributes of each celestial body. Each instance stores:
 
- "How massive is Jupiter?"
+- Planet name
+- Mass
+- Distance from the Sun
+- List of moons
 
- "What is the mass of Jupiter?"
+The class includes getter methods such as `get_name()`, `get_mass()`, and others to allow safe and modular data retrieval.
 
-  "How heavy is Jupiter?"
+This structure ensures each planet’s data is organized, reusable, and easily accessible for query operations.
 
-All of these questions are asking the same thing. The function will return without a fail:
+---
 
-"The mass of Jupiter is 1.8982×10^27 kg"
+### 2. Planetary Data Dictionary
 
-The same logic applies to all other questions.
+Rather than initializing individual objects per query, all planetary data is stored in a centralized dictionary. Each planet is represented by a key (its name), with its corresponding data—mass, distance, and moons—stored as values.
 
-4. Handling Pluto Separately:
+This approach allows efficient lookup and ensures the dataset is easy to update, debug, and extend.
 
-Since poor Pluto is often under a heated debate, the script includes a special case. If our user asks:
+---
 
- "Is Pluto a planet?"
+### 3. Query Processing Function
 
- "Does Pluto exist in the database?"
+The core of the system is the `query_planet()` function, which interprets user input and returns relevant information. To ensure flexibility:
 
-The script responds with: "Pluto is classified as a dwarf planet" (and then displays Pluto’s details).
+- Input is converted to lowercase to reduce case sensitivity.
+- Regular expressions (`re.search`) are used to detect various phrasings and synonyms.
 
-This ensures that Pluto’s planetary status is acknowledged with sensitivity and transparency about the problem. 
+For example, the following queries are interpreted equivalently:
 
-5. The Loop "(while True)":
+- “How massive is Jupiter?”
+- “What is the mass of Jupiter?”
+- “How heavy is Jupiter?”
 
-Our script allows the user to keep asking questions meanwhile the program will continue running until the user types "exit". Each time the user inputs a question, the returns the answer.
+All return:  
+**“The mass of Jupiter is 1.8982×10²⁷ kg.”**
 
+This methodology ensures that varied natural-language inputs can be handled with high accuracy.
 
-Key Strengths to our methods:
+---
 
-    The user can inquire in different ways about the planetary data.
+### 4. Special Handling for Pluto
 
-    The user doesn’t have to worry about precise spelling and grammar.
+Due to Pluto’s unique classification status, the system includes a dedicated response for Pluto-related queries. When users ask questions like:
 
-    Using our storage of data for all planetary information in one place, makes it easy to manipulate later and apply changes to our script below, while being able to record and backtrack any issues for troubleshooting without messing up with the entire code. 
+- “Is Pluto a planet?”
+- “Does Pluto exist in the database?”
 
-    It is exactly the function "query_planet" that enables us to separate the code from the data and add more features later.
+The system replies:  
+**“Pluto is classified as a dwarf planet.”**
 
-    Because of the "re.search" method, the script can recognize varieties of synonyms and handle them correctly.
+It then displays Pluto’s attributes, ensuring clarity and scientific sensitivity.
 
-    The "if __name__ == "__main__" statement ensures that our script will only run if we execute it, and will not initiate itself automatically if it is imported somewhere else.
+---
 
-Conclusion:
+### 5. Continuous Interaction Loop
 
-Our script contains:
+The application runs an infinite loop (`while True:`), allowing users to continue making queries until they choose to exit. This design promotes a smooth and continuous user experience.
 
-    Locally stored data with the Planet class.
+Typing **“exit”** terminates the program.
 
-    The utilization of dictionaries for structured data storage.
+---
 
-   Expressions such as "(re.search)" for flexibility.
+## Key Features
 
-    A loop-based user interface for continuous interaction until ceased. 
+- ✅ **Natural Language Input:** Users can phrase questions in multiple ways without rigid formatting.
+- ✅ **Error Tolerance:** The use of `re.search` enables recognition of varied phrasings and minor typos.
+- ✅ **Data Modularity:** Planetary data is centralized, making updates or additions straightforward.
+- ✅ **Extensible Design:** Separation of logic and data allows future features to be added without disrupting core functionality.
+- ✅ **Safe Execution:** The use of `if __name__ == "__main__"` ensures the script only executes when intended, supporting clean importation in other modules.
+
+---
+
+## Conclusion
+
+The Planetary Query System demonstrates a thoughtful application of Python principles to deliver an intuitive and educational tool. By leveraging:
+
+- Object-oriented design (via the `Planet` class),
+- Structured data storage (via dictionaries),
+- Flexible query handling (via regular expressions),
+- And an interactive command loop,
+
+the system creates an approachable and intelligent interface for exploring the solar system. Its modularity and responsiveness make it a strong foundation for further enhancements such as GUI integration or API support.
+
+---
+
+## Future Improvements
+
+Possible future enhancements could include:
+
+- Adding planetary images or diagrams.
+- Integrating with live astronomical data sources.
+- Expanding the dataset to include additional celestial objects.
+- Implementing a graphical interface for non-technical users.
+
+---
+
+## License
+
+This project is provided for educational and demonstration purposes. Please contact me for permissions or collaboration inquiries.
+
+---
