@@ -1,4 +1,3 @@
-#planet-class
 # Planetary Query System
 
 ## Table of Contents
@@ -141,4 +140,5 @@ Possible future enhancements could include:
 This project is provided for educational and demonstration purposes. Please contact me for permissions or collaboration inquiries.
 
 ---
+
 
