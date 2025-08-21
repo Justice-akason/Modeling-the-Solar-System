@@ -4,11 +4,11 @@
 - [Executive Summary](#executive-summary)
 - [Introduction](#introduction)
 - [System Design and Methodology](#system-design-and-methodology)
-  - [1 Planet Class](#1-planet-class)
-  - [2 Planetary Data Dictionary](#2-planetary-data-dictionary)
-  - [3 Query Processing Function](#3-query-processing-function)
-  - [4 Special Handling for Pluto](#4-special-handling-for-pluto)
-  - [5 Continuous Interaction Loop](#5-continuous-interaction-loop)
+  - [1. Planet Class](#planet-class)
+  - [2. Planetary Data Dictionary](#planetary-data-dictionary)
+  - [3. Query Processing Function](#query-processing-function)
+  - [4. Special Handling for Pluto](#special-handling-for-pluto)
+  - [5. Continuous Interaction Loop](#continuous-interaction-loop)
 - [Key Features](#key-features)
 - [Conclusion](#conclusion)
 - [Future Improvements](#future-improvements)
@@ -36,7 +36,7 @@ The core goals of the project were to:
 
 ## System Design and Methodology
 
-### 1. Planet Class
+### Planet Class
 
 The project defines a `Planet` class that encapsulates the attributes of each celestial body. Each instance stores:
 
@@ -51,7 +51,7 @@ This structure ensures each planet’s data is organized, reusable, and easily a
 
 ---
 
-### 2. Planetary Data Dictionary
+### Planetary Data Dictionary
 
 Rather than initializing individual objects per query, all planetary data is stored in a centralized dictionary. Each planet is represented by a key (its name), with its corresponding data—mass, distance, and moons—stored as values.
 
@@ -59,7 +59,7 @@ This approach allows efficient lookup and ensures the dataset is easy to update,
 
 ---
 
-### 3. Query Processing Function
+### Query Processing Function
 
 The core of the system is the `query_planet()` function, which interprets user input and returns relevant information. To ensure flexibility:
 
@@ -79,7 +79,7 @@ This methodology ensures that varied natural-language inputs can be handled with
 
 ---
 
-### 4. Special Handling for Pluto
+### Special Handling for Pluto
 
 Due to Pluto’s unique classification status, the system includes a dedicated response for Pluto-related queries. When users ask questions like:
 
@@ -93,7 +93,7 @@ It then displays Pluto’s attributes, ensuring clarity and scientific sensitivi
 
 ---
 
-### 5. Continuous Interaction Loop
+### Continuous Interaction Loop
 
 The application runs an infinite loop (`while True:`), allowing users to continue making queries until they choose to exit. This design promotes a smooth and continuous user experience.
 
@@ -140,9 +140,3 @@ Possible future enhancements could include:
 This project is provided for educational and demonstration purposes. Please contact me for permissions or collaboration inquiries.
 
 ---
-
-
-
-
-
-
