@@ -1,5 +1,5 @@
 # Planetary Query System
-
+### 1. Planet Class
 Our Python script is designed to provide information about all of the planets in the solar system. Users can type in questions about a planet’s mass, distance from the sun, or moons, and the script will pull it out from our data base and return the relevant information.
 
 # How my Code works?
