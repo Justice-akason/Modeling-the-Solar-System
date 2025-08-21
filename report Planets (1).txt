@@ -1,16 +1,14 @@
-# My Name
-
 # Planetary Query System
 
 ## Table of Contents
 - [Executive Summary](#executive-summary)
 - [Introduction](#introduction)
 - [System Design and Methodology](#system-design-and-methodology)
-  - [1. Planet Class](#1-planet-class)
-  - [2. Planetary Data Dictionary](#2-planetary-data-dictionary)
-  - [3. Query Processing Function](#3-query-processing-function)
-  - [4. Special Handling for Pluto](#4-special-handling-for-pluto)
-  - [5. Continuous Interaction Loop](#5-continuous-interaction-loop)
+  - [1 Planet Class](#1-planet-class)
+  - [2 Planetary Data Dictionary](#2-planetary-data-dictionary)
+  - [3 Query Processing Function](#3-query-processing-function)
+  - [4 Special Handling for Pluto](#4-special-handling-for-pluto)
+  - [5 Continuous Interaction Loop](#5-continuous-interaction-loop)
 - [Key Features](#key-features)
 - [Conclusion](#conclusion)
 - [Future Improvements](#future-improvements)
@@ -142,6 +140,7 @@ Possible future enhancements could include:
 This project is provided for educational and demonstration purposes. Please contact me for permissions or collaboration inquiries.
 
 ---
+
 
 
 
